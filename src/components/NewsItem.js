@@ -6,7 +6,7 @@ export default class NewsItem extends Component {
         
         return (
             <div>
-                <div className="card" style={{ width: "18rem"}}>
+                <div className="card">
                     <img src={imageurl} className="card-img-top" alt="..."/>
                         <div className="card-body">
                             <h5 className="card-title">{title}...</h5>
@@ -14,7 +14,7 @@ export default class NewsItem extends Component {
                             <a rel="noreferrer"  href={newsurl} target="_blank" className="btn btn-sn btn-dark">Read Full Story</a>
                         </div>
                 </div>
-               
+              
             </div>
         )
     }
