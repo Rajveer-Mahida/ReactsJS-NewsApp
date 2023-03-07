@@ -7,8 +7,8 @@ export default class NewsItem extends Component {
         return (
             <div>
                 <div className="card border-secondary" >
-                    <img src={imageurl} className="card-img-top" alt="..." style={{"height" : "25"}} />
-                        <div className="card-body" style={{"height" : "250px"}}>
+                    <img src={imageurl} className="card-img-top" alt="..." style={{"height" : "200px"}} />
+                        <div className="card-body">
                             <h5 className="card-title">{title}</h5>
                             <p className="card-text">{description}</p>
                             <p className="card-text"><small className="text-muted">{new Date(date).toGMTString()} </small> <span className="badge rounded-pill text-bg-success">From {author}</span></p>

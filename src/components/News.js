@@ -88,7 +88,7 @@ export default class News extends Component {
         <div className="row d-flex justify-content-start" >
           {!this.state.loading && this.state.articles.map((element) => {
             return <div className="col-md-3 my-3" key={element.url}  >
-              <NewsItem title={element.title ? element.title.slice(0, 75) : " "} description={element.description} imageurl={element.urlToImage ? element.urlToImage : "https://resize.indiatvnews.com/en/resize/newbucket/730_-/2020/11/breaking-1603159815-1606179737.jpg"} newsurl={element.url ? element.url : " "} author={element.author ? element.author : "Unknown"} date={element.publishedAt} source={element.source.name} />
+              <NewsItem title={element.title ? element.title.slice(0, 75) : " "} description={element.description ? element.description.slice(0,100) : ""} imageurl={element.urlToImage ? element.urlToImage : "https://resize.indiatvnews.com/en/resize/newbucket/730_-/2020/11/breaking-1603159815-1606179737.jpg"} newsurl={element.url ? element.url : " "} author={element.author ? element.author.slice(0,20) : "Unknown"} date={element.publishedAt} source={element.source.name} />
             </div>
           })}
 
