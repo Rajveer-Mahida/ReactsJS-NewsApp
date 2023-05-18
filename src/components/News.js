@@ -5,8 +5,9 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import PropTypes from 'prop-types'
 
 
-export default class News extends Component {
 
+
+export default class News extends Component {
   static defaultprop = {
     pageSize: 4,
     country: "in",
@@ -38,13 +39,13 @@ export default class News extends Component {
   async updateNews() {
    
     this.props.setProgress(10);
-  
-    let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=5469e571a9c44c6c8037ce15909fff46&pageSize=${this.props.pageSize}&page=${this.state.page}`;
+    this.setState({ page: this.state.page + 1});
+    let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=${this.state.page}`;
     this.setState({ loading: true })
     let data = await fetch(url);
     this.props.setProgress(30);
     let parsedData = await data.json();
-    console.log(parsedData);
+    // console.log(parsedData);
     this.props.setProgress(50);
     this.setState({ articles: parsedData.articles, totalResults: this.state.totalResults, loading: false });
     this.props.setProgress(100);
@@ -58,19 +59,19 @@ export default class News extends Component {
 
 
   fetchMoreData = async () => {
-    // this.setState({ page: this.state.page + 1});
-    let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=5469e571a9c44c6c8037ce15909fff46&pageSize=${this.props.pageSize}&page=${this.state.page}`;
+    this.setState({ page: this.state.page + 1});
+    let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=${this.state.page}`;
     let data = await fetch(url);
     let parsedData = await data.json();
-    console.log(parsedData);
+    // console.log(parsedData);
     this.setState({ articles: this.state.articles.concat(parsedData.articles), totalResults: this.state.totalResults});
   };
 
   render() {
     return (
 
-      <>
-        <h1 className="text-center">NewsFire - Top Headlines Of The Day</h1>
+      <div>
+        <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }}>NewsFire - Top Headlines Of The Day</h1>
         {/* {this.state.loading && <Spinner />} */}
 
         <InfiniteScroll
@@ -93,7 +94,7 @@ export default class News extends Component {
           </div>
         </InfiniteScroll>
 
-      </>
+      </div>
     )
   }
 }
